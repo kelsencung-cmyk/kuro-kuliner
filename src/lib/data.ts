@@ -1,7 +1,5 @@
 import type { Menu } from '@/types';
-
 export const BRAND = 'Kuro Kuliner';
-
 export const MENU_SEED: Menu[] = [
   { id: 'm1', name: 'Nasi Goreng Spesial', description: 'Nasi goreng dengan telur, ayam, dan kerupuk.', price: 18000, category: 'Makanan', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600', stock: 50 },
   { id: 'm2', name: 'Mie Goreng', description: 'Mie goreng dengan sayur, telur, dan ayam.', price: 16000, category: 'Makanan', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600', stock: 45 },
@@ -15,5 +13,4 @@ export const MENU_SEED: Menu[] = [
   { id: 'm10', name: 'Pisang Goreng', description: 'Pisang goreng crispy dengan topping keju.', price: 10000, category: 'Camilan', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600', stock: 25 },
   { id: 'm11', name: 'Tahu Crispy', description: 'Tahu goreng crispy dengan bumbu tabur.', price: 8000, category: 'Camilan', image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=600', stock: 30 }
 ];
-
 export const CATEGORIES = ['Semua', 'Makanan', 'Minuman', 'Camilan'];
