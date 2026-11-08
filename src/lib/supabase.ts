@@ -29,3 +29,16 @@ export async function setStoreStatus(isOpen: boolean) {
   const { error } = await supabase.from('settings').upsert({ id: 1, is_open: isOpen });
   if (error) { console.error(error); return { ok: false }; } return { ok: true };
 }
+export async function fetchStoreSettings() {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('store_settings').select('*').eq('id', 1).single();
+  if (error) return null;
+  return data;
+}
+
+export async function updateStoreSettings(name: string) {
+  if (!supabase) return { ok: false };
+  const { error } = await supabase.from('store_settings').update({ store_name: name }).eq('id', 1);
+  if (error) return { ok: false };
+  return { ok: true };
+}
