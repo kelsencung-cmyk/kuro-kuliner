@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { getSession } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
-import { fetchOrders, hasSupabase, updateOrderStatus, fetchStoreStatus, setStoreStatus } from '@/lib/supabase';
+import { fetchOrders, hasSupabase, updateOrderStatus, fetchStoreStatus, setStoreStatus, fetchStoreSettings, updateStoreSettings } from '@/lib/supabase';
 import type { Order } from '@/types';
 
 function mapOrder(o: any): Order { return { id: o.id, items: o.items, total: o.total, status: o.status, buyerName: o.buyer_name, buyerPhone: o.buyer_phone, address: o.address, note: o.note, paymentMethod: o.payment_method || 'SeaBank', createdAt: o.created_at }; }
@@ -17,6 +17,9 @@ function getStatusColor(status: string) {
 export default function AdminPage() {
   const router = useRouter(); const [ok, setOk] = useState(false); const [orders, setOrders] = useState<Order[]>([]);
   const [isOpen, setIsOpen] = useState(true); const [loadingToggle, setLoadingToggle] = useState(false);
+  const [storeName, setStoreName] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState('');
 
   useEffect(() => {
     const s = getSession(); if (s?.role !== 'admin') { router.push('/login'); return; } setOk(true);
@@ -24,6 +27,7 @@ export default function AdminPage() {
       if (hasSupabase) { 
         const data = await fetchOrders(); if (data) { setOrders(data.map(mapOrder)); }
         const status = await fetchStoreStatus(); setIsOpen(status);
+        const settings = await fetchStoreSettings(); if(settings) setStoreName(settings.store_name);
       } else { 
         const raw = localStorage.getItem('kuro-orders'); setOrders(raw ? JSON.parse(raw) : []); 
       } 
@@ -44,26 +48,40 @@ export default function AdminPage() {
     setLoadingToggle(false);
   }
 
+  async function saveName(e: React.FormEvent) {
+    e.preventDefault(); setMsg(''); setSaving(true);
+    const res = await updateStoreSettings(storeName);
+    if (res.ok) { setMsg('Nama toko berhasil disimpan!'); router.refresh(); } else { setMsg('Gagal menyimpan.'); }
+    setSaving(false);
+  }
+
   if (!ok) return null;
 
   return (
     <div>
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 bg-white p-4 rounded-xl border border-neutral-200 shadow-sm">
         <div>
-          <h1 className="text-xl font-bold">Admin — Pesanan</h1>
-          <p className="text-sm text-neutral-500">Kelola pesanan dan status toko Kuro Kuliner.</p>
+          <h1 className="text-xl font-bold">Admin Panel</h1>
+          <p className="text-sm text-neutral-500">Kelola pesanan dan pengaturan toko.</p>
         </div>
         <div className="flex items-center gap-3 mt-3 md:mt-0">
           <span className="text-sm font-semibold">Status Toko:</span>
-          <button 
-            onClick={toggleStore} disabled={loadingToggle}
-            className={`px-4 py-2 rounded-lg text-sm font-bold text-white transition-colors ${isOpen ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'} disabled:opacity-50`}
-          >
+          <button onClick={toggleStore} disabled={loadingToggle} className={`px-4 py-2 rounded-lg text-sm font-bold text-white transition-colors ${isOpen ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'} disabled:opacity-50`}>
             {isOpen ? 'TOKO BUKA (Klik untuk Tutup)' : 'TOKO TUTUP (Klik untuk Buka)'}
           </button>
         </div>
       </div>
 
+      <div className="bg-white border border-neutral-200 rounded-xl p-4 mb-6 shadow-sm">
+        <h2 className="font-bold mb-3">Pengaturan Nama Toko</h2>
+        <form onSubmit={saveName} className="flex gap-2 items-center">
+          <input value={storeName} onChange={(e) => setStoreName(e.target.value)} className="border border-neutral-300 rounded-lg px-3 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="Nama Toko" />
+          <button disabled={saving} type="submit" className="bg-brand-600 text-white px-4 py-2 rounded-lg font-semibold disabled:opacity-50">{saving ? 'Menyimpan...' : 'Simpan'}</button>
+        </form>
+        {msg && <p className="text-sm text-green-600 mt-2">{msg}</p>}
+      </div>
+
+      <h2 className="text-lg font-bold mb-3">Daftar Pesanan</h2>
       {orders.length === 0 && <p className="text-neutral-500">Belum ada pesanan.</p>}
       <div className="space-y-3">
         {orders.map((o) => (
