@@ -17,9 +17,8 @@ export async function insertOrder(order: any) {
 export async function fetchOrders() { if (!supabase) return null; const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false }); if (error) return null; return data; }
 export async function updateOrderStatus(id: string, status: string) { if (!supabase) return { ok: false }; const { error } = await supabase.from('orders').update({ status }).eq('id', id); if (error) return { ok: false }; return { ok: true }; }
 
-// Fungsi Toko Buka/Tutup
 export async function fetchStoreStatus() {
-  if (!supabase) return true; // Default buka kalau tanpa supabase
+  if (!supabase) return true;
   const { data, error } = await supabase.from('settings').select('is_open').eq('id', 1).single();
   if (error || !data) return true; 
   return data.is_open;
