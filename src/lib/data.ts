@@ -21,15 +21,7 @@ export const MENU_SEED: Menu[] = [
     image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=80', 
     stock: 3 
   },
-  { 
-    id: 'h3', 
-    name: 'Android Second Mulus', 
-    description: 'Layar lebar, RAM 8GB / 256GB. Baterai awet.', 
-    price: 1800000, 
-    category: 'Handphone', 
-    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80', 
-    stock: 10 
-  },
+ 
   { 
     id: 'a1', 
     name: 'Casing Silikon Premium', 
