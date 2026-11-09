@@ -27,7 +27,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Garansi Resmi. RAM 8GB / 256GB.', 
     price: 2800000, 
     category: 'Handphone', 
-    image: 'https://images.unsplash.com/photo-1598327105666-5b89351cb31b?w=600&q=80', 
+    image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&q=80', 
     stock: 10 
   },
   { 
