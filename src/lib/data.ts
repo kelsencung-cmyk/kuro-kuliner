@@ -22,13 +22,15 @@ export const MENU_SEED: Menu[] = [
     stock: 3 
   },
   { 
+  
     id: 'h3', 
-    name: 'Xiaomi Redmi Note 12', 
-    description: 'Garansi Resmi. RAM 8GB / 256GB.', 
-    price: 2800000, 
+    name: 'Android Second Mulus', 
+    description: 'Layar lebar, RAM 8GB / 256GB. Baterai awet.', 
+    price: 1800000, 
     category: 'Handphone', 
-    image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&q=80', 
+    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80', 
     stock: 10 
+
   },
   { 
     id: 'a1', 
