@@ -9,7 +9,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Garansi Resmi iBox. Fullset, mulus 99%.', 
     price: 7500000, 
     category: 'Handphone', 
-    image: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600', 
+    image: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&q=80', 
     stock: 5 
   },
   { 
@@ -18,7 +18,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Garansi SEIN. Warna Phantom Black.', 
     price: 10500000, 
     category: 'Handphone', 
-    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600', 
+    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=80', 
     stock: 3 
   },
   { 
@@ -27,7 +27,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Garansi Resmi. RAM 8GB / 256GB.', 
     price: 2800000, 
     category: 'Handphone', 
-    image: 'https://images.unsplash.com/photo-1598327105666-5b89351cb31b?w=600', 
+    image: 'https://images.unsplash.com/photo-1598327105666-5b89351cb31b?w=600&q=80', 
     stock: 10 
   },
   { 
@@ -36,7 +36,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Tersedia untuk semua tipe iPhone & Android.', 
     price: 45000, 
     category: 'Aksesoris', 
-    image: 'https://images.unsplash.com/photo-1601593346740-925612772716?w=600', 
+    image: 'https://images.unsplash.com/photo-1601593346740-925612772716?w=600&q=80', 
     stock: 50 
   },
   { 
@@ -45,7 +45,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Lapisan 9H, jernih, anti sidik jari.', 
     price: 30000, 
     category: 'Aksesoris', 
-    image: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600', 
+    image: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&q=80', 
     stock: 100 
   },
   { 
@@ -54,7 +54,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Kepala charger + kabel Type-C.', 
     price: 120000, 
     category: 'Aksesoris', 
-    image: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600', 
+    image: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&q=80', 
     stock: 25 
   },
   { 
@@ -63,7 +63,7 @@ export const MENU_SEED: Menu[] = [
     description: 'Baterai tahan lama, kualitas suara jernih.', 
     price: 250000, 
     category: 'Aksesoris', 
-    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600', 
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=80', 
     stock: 15 
   }
 ];
