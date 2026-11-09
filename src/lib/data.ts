@@ -22,7 +22,6 @@ export const MENU_SEED: Menu[] = [
     stock: 3 
   },
   { 
-  
     id: 'h3', 
     name: 'Android Second Mulus', 
     description: 'Layar lebar, RAM 8GB / 256GB. Baterai awet.', 
@@ -30,7 +29,6 @@ export const MENU_SEED: Menu[] = [
     category: 'Handphone', 
     image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80', 
     stock: 10 
-
   },
   { 
     id: 'a1', 
